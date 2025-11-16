@@ -1,0 +1,548 @@
+/* المتغيرات الأساسية */
+:root {
+    --primary-color: #0a0a0a;
+    --secondary-color: #001f3f;
+    --accent-color: #ffd700;
+    --text-color: #ffffff;
+    --background-color: #0a1128;
+    --panel-bg: rgba(0, 31, 63, 0.8);
+    --border-color: #ffd700;
+    --success-color: #2ecc40;
+    --danger-color: #ff4136;
+    --warning-color: #ff851b;
+    --info-color: #0074d9;
+}
+
+/* الأساسيات */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    direction: rtl;
+}
+
+/* الشاشات */
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.screen.active {
+    display: block;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* العناوين */
+.game-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.game-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--accent-color);
+}
+
+/* الأزرار */
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: inline-block;
+    min-width: 150px;
+    margin: 10px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--accent-color), #ffed4e);
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--accent-color);
+}
+
+.btn-secondary:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+/* نماذج الإدخال */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+input, select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--panel-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* قائمة الغرف */
+.rooms-list {
+    margin-top: 30px;
+}
+
+.room-item {
+    background: var(--panel-bg);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.room-item:hover {
+    transform: translateX(-5px);
+    border-color: var(--accent-color);
+}
+
+/* غرفة الانتظار */
+.room-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.room-info {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+}
+
+.players-list {
+    display: grid;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.player-item {
+    background: var(--panel-bg);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.player-host {
+    border-color: var(--accent-color);
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.player-name {
+    font-weight: bold;
+}
+
+.host-badge {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* شاشة اللعب */
+.game-header {
+    background: var(--panel-bg);
+    padding: 15px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.game-info-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.game-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.panel {
+    background: var(--panel-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.panel h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+/* لوحة الدور */
+#role-info {
+    text-align: center;
+}
+
+#role-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--accent-color);
+    margin-bottom: 15px;
+}
+
+#role-name {
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+/* قائمة اللاعبين في اللعبة */
+.player-game-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+.player-game-item.alive {
+    border-color: var(--success-color);
+}
+
+.player-game-item.dead {
+    opacity: 0.6;
+    border-color: var(--danger-color);
+    text-decoration: line-through;
+}
+
+.player-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.status-alive {
+    background: var(--success-color);
+}
+
+.status-dead {
+    background: var(--danger-color);
+}
+
+/* أزرار الإجراءات */
+.action-btn {
+    width: 100%;
+    padding: 12px;
+    margin: 5px 0;
+    background: var(--secondary-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* سجل الأحداث */
+#game-log {
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+}
+
+.log-entry {
+    padding: 8px;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    border-right: 3px solid var(--accent-color);
+}
+
+.log-entry.system {
+    border-right-color: var(--info-color);
+    font-style: italic;
+}
+
+.log-entry.death {
+    border-right-color: var(--danger-color);
+}
+
+.log-entry.ability {
+    border-right-color: var(--warning-color);
+}
+
+/* شاشة النتائج */
+.winner-section {
+    text-align: center;
+    margin: 30px 0;
+    padding: 20px;
+    border-radius: 10px;
+    background: var(--panel-bg);
+}
+
+.winner-good {
+    border: 3px solid var(--success-color);
+}
+
+.winner-evil {
+    border: 3px solid var(--danger-color);
+}
+
+.roles-list {
+    display: grid;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.role-item {
+    background: var(--panel-bg);
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.role-good {
+    border-left: 5px solid var(--success-color);
+}
+
+.role-evil {
+    border-left: 5px solid var(--danger-color);
+}
+
+.role-team {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.team-good {
+    background: var(--success-color);
+    color: var(--primary-color);
+}
+
+.team-evil {
+    background: var(--danger-color);
+    color: var(--text-color);
+}
+
+/* التكيف مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        padding: 12px 20px;
+        min-width: 120px;
+        font-size: 1rem;
+    }
+    
+    .game-content {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+    
+    .panel {
+        padding: 15px;
+    }
+    
+    .game-info-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (min-width: 769px) {
+    .game-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* المؤقت */
+.timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* رسائل التنبيه */
+.alert {
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.alert-info {
+    background: rgba(0, 116, 217, 0.2);
+    border: 1px solid var(--info-color);
+    color: var(--info-color);
+}
+
+.alert-warning {
+    background: rgba(255, 133, 27, 0.2);
+    border: 1px solid var(--warning-color);
+    color: var(--warning-color);
+}
+
+.alert-success {
+    background: rgba(46, 204, 64, 0.2);
+    border: 1px solid var(--success-color);
+    color: var(--success-color);
+}
+
+.alert-danger {
+    background: rgba(255, 65, 54, 0.2);
+    border: 1px solid var(--danger-color);
+    color: var(--danger-color);
+}
+
+/* خانة الاختيار */
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.checkbox-label input {
+    width: auto;
+    margin-left: 10px;
+}
+
+/* معلومات اللعبة */
+.game-info {
+    background: var(--panel-bg);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.game-info h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.game-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.game-info li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-info li:last-child {
+    border-bottom: none;
+}
+
+/* شريط التمرير المخصص */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffed4e;
+}
